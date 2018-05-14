@@ -1,13 +1,14 @@
 #include <Misc.au3>
 
 
-HotKeySet("{NUMPAD0}","Process")
+HotKeySet("{HOME}","Process")
 
 ; https://www.autoitscript.com/autoit3/docs/libfunctions/_IsPressed.
 
 
 Func Process()
-   Sleep(100)
+   HotKeySet("{HOME}","Nothing")
+   Sleep(1000)
    ConsoleWrite("Starting to process" & @CRLF)
    HotKeySet("o","Nothing")
    HotKeySet("p","Nothing")
@@ -15,7 +16,7 @@ Func Process()
    HotKeySet("a","Nothing")
    HotKeySet("{SPACE}","Nothing")
    HotKeySet("{ENTER}","Nothing")
-   HotKeySet("{NUMPAD0}","Nothing")
+
    While 1
 	  Local $hDLL = DllOpen("user32.dll")
 	  If _IsPressed("51", $hDLL) Then
@@ -38,8 +39,9 @@ Func Process()
 	  EndIf
 
 	  ; Numpad 0 is exit process()
-	  If _IsPressed("60", $hDLL) Then ExitLoop
+	  If _IsPressed("24", $hDLL) Then ExitLoop
 	  Sleep(5)
+
    WEnd
    HotKeySet("o")
    HotKeySet("p")
@@ -47,7 +49,7 @@ Func Process()
    HotKeySet("a")
    HotKeySet("{SPACE}")
    HotKeySet("{ENTER}")
-   HotKeySet("{NUMPAD0}","Process")
+   HotKeySet("{HOME}","Process")
    ConsoleWrite("End process" & @CRLF)
 EndFunc
 Func Nothing()
