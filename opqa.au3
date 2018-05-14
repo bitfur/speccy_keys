@@ -38,7 +38,7 @@ Func Process()
 		 MouseClick("right")
 	  EndIf
 
-	  ; Numpad 0 is exit process()
+	  ; Home exit process()
 	  If _IsPressed("24", $hDLL) Then ExitLoop
 	  Sleep(5)
 
